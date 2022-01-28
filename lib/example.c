@@ -17,13 +17,13 @@ int main(int argc, char **argv) {
 
   fgets(source, 256, stdin);
 
-  if (quilc_safely_parse_quil(source, &program) != ERROR_SUCCESS)
+  if (quilc_parse_quil(source, &program) != ERROR_SUCCESS)
     die("unable to parse quil");
   
   if (quilc_build_nq_linear_chip(10, &chip_spec) != ERROR_SUCCESS)
     die("unable to build chip");
   
-  if (quilc_compiler_hook(program, chip_spec, &processed_program) != ERROR_SUCCESS)
+  if (quilc_compile_quil(program, chip_spec, &processed_program) != ERROR_SUCCESS)
     die("unable to compile program");
 
   quilc_print_chip_spec(chip_spec);

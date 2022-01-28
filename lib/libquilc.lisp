@@ -32,12 +32,12 @@
   (:type quil-program chip-specification error-type)
   (:literal "/* functions */")
   (:function
-   (safely-parse-quil quil-program ((source :string)))
-   (print-program :void ((program quil-program)))
-   (compiler-hook quil-program ((program quil-program) (chip-spec chip-specification)))
-   (cl-quil::build-nq-linear-chip chip-specification ((n :int)))
-   (quil::read-chip-spec-file chip-specification ((filename :string)))
-   (print-chip-spec :void ((chip-spec chip-specification)))))
+   (("parse_quil" safely-parse-quil) quil-program ((source :string)))
+   (("print_program" print-program) :void ((program quil-program)))
+   (("compile_quil" compiler-hook) quil-program ((program quil-program) (chip-spec chip-specification)))
+   (("build_nq_linear_chip" cl-quil::build-nq-linear-chip) chip-specification ((n :int)))
+   (("chip_spec_from_file" quil::read-chip-spec-file) chip-specification ((filename :string)))
+   (("print_chip_spec" print-chip-spec) :void ((chip-spec chip-specification)))))
 
 (sbcl-librarian:build-bindings libquilc ".")
 (sbcl-librarian:build-python-bindings libquilc ".")
