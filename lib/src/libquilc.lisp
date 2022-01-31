@@ -1,7 +1,7 @@
 (require '#:asdf)
 
-(asdf:load-system '#:sbcl-librarian)
 (asdf:load-system '#:quilc)
+(asdf:load-system '#:sbcl-librarian)
 
 (in-package #:quilc)
 
