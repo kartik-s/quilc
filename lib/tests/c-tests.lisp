@@ -6,7 +6,7 @@
 
 (deftest test-build-lib ()
   "Test that libquilc builds."
+  (uiop:chdir "lib")
   (multiple-value-bind (output error-output exit-code)
-      (format t "~a" (uiop:getcwd))
-      (uiop:run-program "make" :output t)
-    (is exit-code 0)))
+      (uiop:run-program "make")
+    (is (eql exit-code 0))))
