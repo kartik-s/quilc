@@ -16,10 +16,10 @@ if __name__ == '__main__':
     if (libquilc.quilc_parse_quil(source.encode('utf-8'), byref(program)) != 0):
         die('unable to parse quil')
 
-    if (libquilc.quilc_build_nq_linear_chip(10, byref(chip_spec)) != 0):
+    if (libquilc.quilc_build_nq_linear_chip(8, byref(chip_spec)) != 0):
         die('unable to create chip spec');
 
-    if (libquilc.quilc_compile_quil(program, chip_spec, byref(processed_program)) != 0):
+    if (libquilc.quilc_compile_protoquil(program, chip_spec, byref(processed_program)) != 0):
         die('unable to compile program')
 
     libquilc.quilc_print_program(processed_program);
