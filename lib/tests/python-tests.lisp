@@ -5,6 +5,7 @@
 (in-package #:libquilc-tests)
 
 (deftest test-python-compile-quil ()
+  "Test compiling Quil from Python."
   (uiop:with-current-directory ("lib/")
     (let* ((input-source "H 0")
            (parsed-program (cl-quil:safely-parse-quil input-source))
@@ -16,6 +17,7 @@
         (is (string= output expected-output))))))
 
 (deftest test-python-compile-protoquil ()
+  "Test compiling ProtoQuil from Python."
   (uiop:with-current-directory ("lib/")
     (let* ((input-source "H 0")
            (parsed-program (cl-quil:safely-parse-quil input-source))
@@ -27,4 +29,12 @@
         (is (string= output expected-output))))))
 
 (deftest test-python-print-chip-spec ()
-  (is nil))
+  "Test printing chip specifications from Python."
+  (uiop:with-current-directory ("lib/")
+    (let ((chip-spec1 (cl-quil::build-nq-linear-chip 8))
+          (chip-spec2 (quilc::lookup-isa-descriptor-for-name "8Q")))
+      (multiple-value-bind (output error-output exit-code)
+          (uiop:run-program '("python3" "tests/python/print_chip_spec.py") :env '((:PYTHONPATH . ".")) :output :string)
+        (is (string= output (concatenate 'string
+                                         (cl-quil::debug-print-chip-spec chip-spec1 nil)
+                                         (cl-quil::debug-print-chip-spec chip-spec2 nil))))))))

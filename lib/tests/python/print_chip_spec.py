@@ -9,7 +9,7 @@ def die(msg):
 if __name__ == '__main__':
     chip_spec = libquilc.chip_specification()
 
-    if (libquilc.quilc_build_nq_linear_chip(10, byref(chip_spec)) != 0):
+    if (libquilc.quilc_build_nq_linear_chip(8, byref(chip_spec)) != 0):
         die('unable to create chip spec');
 
     libquilc.quilc_print_chip_spec(chip_spec);
