@@ -18,6 +18,4 @@
                                         :verbose t
                                         :describe-failures t
                                         :interactive nil)))
-       (uiop:chdir "lib")
-       (uiop:run-program "make" "clean")
        (uiop:quit (if successp 0 1))))))

@@ -1,7 +1,8 @@
-#include "libquilc.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "libquilc.h"
 
 void die(char *msg) {
   printf("%s\n", msg);
@@ -23,11 +24,12 @@ int main(int argc, char **argv) {
   if (quilc_build_nq_linear_chip(10, &chip_spec) != ERROR_SUCCESS)
     die("unable to build chip");
   
-  if (quilc_compile_quil(program, chip_spec, &processed_program) != ERROR_SUCCESS)
+  if (quilc_compile_protoquil(program, chip_spec, &processed_program) != ERROR_SUCCESS)
     die("unable to compile program");
 
-  quilc_print_chip_spec(chip_spec);
   quilc_print_program(processed_program);
+  quilc_release_handle(program);
+  quilc_release_handle(processed_program);
   quilc_release_handle(chip_spec);
 
   return 0;
