@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   if (quilc_parse_quil(source, &program) != ERROR_SUCCESS)
     die("unable to parse quil");
   
-  if (quilc_build_nq_linear_chip(10, &chip_spec) != ERROR_SUCCESS)
+  if (quilc_build_nq_linear_chip(8, &chip_spec) != ERROR_SUCCESS)
     die("unable to build chip");
   
   if (quilc_compile_quil(program, chip_spec, &processed_program) != ERROR_SUCCESS)

@@ -5,10 +5,10 @@
 (in-package #:libquilc-tests)
 
 (deftest test-python-compile-quil ()
-  (is t))
+  (is nil))
 
 (deftest test-python-compile-protoquil ()
-  (is t))
+  (is nil))
 
 (deftest test-python-print-chip-spec ()
-  (is t))
+  (is nil))
