@@ -10,4 +10,4 @@ all: $(TEST_SRCS:.c=)
 	gcc $< -o $@ -lsbcl -lquilc -L../.. -I../..
 
 clean:
-	rm -f compile-quil compile-protoquil print-chip-spec
+	rm -f $(TEST_SRCS:.c=)
