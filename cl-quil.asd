@@ -117,7 +117,7 @@
                #:salza2                 ; God table compression
                #:optima
 
-               #+sbcl #:sb-rotate-byte
+               (:feature :sbcl #:sb-rotate-byte)
                )
   :pathname "src/"
   :serial t

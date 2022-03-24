@@ -1,6 +1,6 @@
 (asdf:defsystem #:cl-quil-benchmarking
   :depends-on (#:cl-quil
-               #+sbcl #:sb-sprof         ; used for quilc-perf (SBCL only)
+               (:feature :sbcl #:sb-sprof)         ; used for quilc-perf (SBCL only)
                #:qvm-app                ; used for quilc-perf
                #:metering               ; used for quilc-perf
                #:trivial-benchmark
