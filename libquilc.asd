@@ -8,7 +8,7 @@
   :version (:read-file-form "VERSION.txt")
   :license "Apache License 2.0 (See LICENSE.txt)"
   :pathname "lib/src/"
-  :depends-on (#:quilc
+  :depends-on (#:cl-quil
                #:sbcl-librarian
                )
   :in-order-to ((asdf:test-op (asdf:test-op #:libquilc-tests)))

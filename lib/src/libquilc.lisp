@@ -21,10 +21,9 @@
   (:literal "/* functions */")
   (:function
    (("parse_quil" quil:safely-parse-quil) quil-program ((source :string)))
-   (("print_program" quilc::print-program) :void ((program quil-program)))
+   (("print_program" quil::print-parsed-program) :void ((program quil-program)))
    (("compile_quil" quil:compiler-hook) quil-program ((program quil-program) (chip-spec chip-specification)))
    (("compile_protoquil" compile-protoquil) quil-program ((program quil-program) (chip-spec chip-specification)))
    (("build_nq_linear_chip" quil::build-nq-linear-chip) chip-specification ((n :int)))
-   (("chip_spec_from_isa_descriptor" quilc::lookup-isa-descriptor-for-name) chip-specification ((descriptor :string)))
    (("print_chip_spec" quil::debug-print-chip-spec) :void ((chip-spec chip-specification)))))
 
